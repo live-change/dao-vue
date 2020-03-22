@@ -1,0 +1,38 @@
+{
+  "name": "@live-change/dao-vue",
+  "version": "0.1.0",
+  "author": {
+    "email": "m8@em8.pl",
+    "name": "Michał Łaszczewski",
+    "url": "http://www.viamage.com/"
+  },
+  "bugs": {
+    "url": "https://github.com/live-change/vue/issues"
+  },
+  "dependencies": {
+    "@live-change/dao": "git+https://github.com/live-change/dao.git"
+  },
+  "devDependencies": {
+  },
+  "description": "Vue.js integration for live-change dao",
+  "directories": {},
+  "homepage": "https://github.com/live-change/dao-vue",
+  "license": "MIT",
+  "main": "index.js",
+  "browser": "browser.js",
+  "maintainers": [
+    {
+      "email": "michal@laszczewski.com",
+      "name": "Michał Łaszczewski"
+    }
+  ],
+  "optionalDependencies": {},
+  "readme": "README.md",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {
+    "compileTests": "webpack test/*.js tests-bundle.js"
+  }
+}
