@@ -12,8 +12,7 @@
   "dependencies": {
     "@live-change/dao": "git+https://github.com/live-change/dao.git"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "description": "Vue.js integration for live-change dao",
   "directories": {},
   "homepage": "https://github.com/live-change/dao-vue",
