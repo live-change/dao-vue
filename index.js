@@ -4,7 +4,7 @@ let prefix = "$reactiveDaoPath_"
 const ReactiveDaoVue = {
   install(Vue, options) {
     if(!options || !options.dao) throw new Error("dao option required")
-    let dao = options.dao
+    const dao = options.dao
 
     Vue.mixin({
       beforeCreate() {
@@ -56,6 +56,8 @@ const ReactiveDaoVue = {
                 reactiveObservables[key] = dao.observable(newPath)
                 reactiveObservables[key].bindProperty(this, key)
                 reactiveObservables[key].bindErrorProperty(this, key+"Error")
+              } else {
+                this[key] = undefined
               }
             })
           } else if(typeof path == 'string') {
@@ -128,6 +130,45 @@ const ReactiveDaoVue = {
           this.reactivePreFetchObservable.unbindProperty(this, "reactivePreFetchedPaths")
           this.reactivePreFetchObservable.unbindErrorProperty(this, "reactivePreFetchError")
         }
+      }
+    })
+
+    Vue.component('reactive', {
+      name: "Observe",
+      props: {
+        what: {
+          type: Object
+        }
+      },
+      data() {
+        let values = {}, errors = {}
+        for(const key in this.what) {
+          values[key] = undefined
+          values[key + 'Error'] = undefined
+        }
+        return {
+          values
+        }
+      },
+      created() {
+        this.observables = {}
+        for(const name in this.what) {
+          const what = this.what[key]
+          const observable = dao.observable(what)
+          this.observables[name] = observable
+          observable.bindProperty(this.values[name])
+          observable.bindErrorProperty(this.values[name+'Error'])
+        }
+      },
+      beforeDestroy() {
+        for(const name in this.observables) {
+          const observable = this.observables[name]
+          observable.unbindProperty(this, "reactivePreFetchedPaths")
+          observable.unbindErrorProperty(this, "reactivePreFetchError")
+        }
+      },
+      render(createElement) {
+        return this.$scopedSlots.default(this.values)[0]
       }
     })
   }
