@@ -48,6 +48,8 @@ const ReactiveDaoVue = {
             }
             this.$watch(prefix + key, newPath => {
               if(reactiveObservables[key]) {
+                this[key] = undefined
+                this[key+"Error"] = undefined
                 reactiveObservables[key].unbindProperty(this, key)
                 reactiveObservables[key].unbindErrorProperty(this, key+"Error")
               }
