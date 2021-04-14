@@ -10,7 +10,7 @@
     "url": "https://github.com/live-change/vue/issues"
   },
   "dependencies": {
-    "@live-change/dao": "^0.2.26"
+    "@live-change/dao": "^0.2.34"
   },
   "devDependencies": {},
   "description": "Vue.js integration for live-change dao",
@@ -18,7 +18,7 @@
   "homepage": "https://github.com/live-change/dao-vue",
   "license": "MIT",
   "main": "index.js",
-  "browser": "browser.js",
+  "module": "index.js",
   "maintainers": [
     {
       "email": "michal@laszczewski.com",
