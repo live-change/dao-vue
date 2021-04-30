@@ -46,7 +46,12 @@ const ReactiveDaoVue = {
               reactiveObservables[key].bindProperty(this, key)
               reactiveObservables[key].bindErrorProperty(this, key+"Error")
             }
+            let oldPathJson
             this.$watch(prefix + key, newPath => {
+              const json = JSON.stringify(newPath)
+              const match = JSON.stringify(newPath) == oldPathJson
+              oldPathJson = json
+              if(match) return
               if(reactiveObservables[key]) {
                 this[key] = undefined
                 this[key+"Error"] = undefined
