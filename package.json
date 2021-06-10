@@ -7,10 +7,10 @@
     "url": "http://www.viamage.com/"
   },
   "bugs": {
-    "url": "https://github.com/live-change/vue/issues"
+    "url": "https://github.com/live-change/dao-vue/issues"
   },
   "dependencies": {
-    "@live-change/dao": "^0.2.41"
+    "@live-change/dao": "^0.3.3"
   },
   "devDependencies": {},
   "description": "Vue.js integration for live-change dao",
